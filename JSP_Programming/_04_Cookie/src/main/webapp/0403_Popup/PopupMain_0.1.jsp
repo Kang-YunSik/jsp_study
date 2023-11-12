@@ -54,7 +54,7 @@
                     $.ajax({
                         url : './PopupCookie.jsp',
                         type : 'get',
-                        date : {inactiveToday : chkVal},
+                        data : {inactiveToday : chkVal},
                         dataType : 'text',
                         success : function (resData) {
                             if (resData != '') {
