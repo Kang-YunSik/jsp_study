@@ -1,5 +1,7 @@
 <%@ page import="common.JDBConnect" %>
 <%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,10 +14,24 @@
         JDBConnect jdbc = new JDBConnect();
 
         // 쿼리문 생성
-        String sql = "SELECT id, pass, name, regidate FROM member";
+        String sql = "SELECT id, pass, name, register FROM member";
         Statement stmt = jdbc.con.createStatement();
 
+        // 쿼리 수행
+        ResultSet rs = stmt.executeQuery(sql);
 
+        // 결과 확인(웹 페이지에 출력)
+        while (rs.next()) {
+            String id = rs.getString(1);
+            String pw = rs.getString(2);
+            String name = rs.getString("name");
+            Date register = rs.getDate("register");
+
+            out.println(String.format("%s %s %s %s", id, pw, name, register) + "<br>");
+        }
+
+        // 연결 닫기
+        jdbc.close();
     %>
 </body>
 </html>
