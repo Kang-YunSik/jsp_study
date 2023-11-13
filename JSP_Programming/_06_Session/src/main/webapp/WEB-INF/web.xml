@@ -8,4 +8,22 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+
+    <!-- DB 매개변수 -->
+    <context-param>
+        <param-name>Driver</param-name>
+        <param-value>org.mariadb.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DriverURL</param-name>
+        <param-value>jdbc:mariadb://localhost:3306/musthave</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DriverId</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DriverPw</param-name>
+        <param-value>12345</param-value>
+    </context-param>
 </web-app>
