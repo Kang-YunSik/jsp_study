@@ -3,8 +3,19 @@
 <html>
 <head>
     <title>Session</title>
+    <style>
+        table {
+            border: 1px solid;
+            width: 90%;
+            margin: 0 auto;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <jsp:include page="common/Link.jsp" />
     <h2>로그인 페이지</h2>
     <span style="color: red;
             font-size: 1.2em;">
