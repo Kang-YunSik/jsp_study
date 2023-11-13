@@ -1,5 +1,6 @@
 package common;
 
+import javax.servlet.ServletContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -44,5 +45,37 @@ public class JDBConnect {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // 두 번째 생성자. web.xml에서 값을 받아서 JDBC 연결
+    public JDBConnect(String driver, String url, String id, String pwd){
+        try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, id, pwd);
+
+            System.out.println("DB 연결 성공(인수 생성자1)");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 세 번째 생성자. context 매개변수를 생성자에서 직접 가져오기
+    public JDBConnect(ServletContext application) {
+        try {
+            // JDBC 드라이버 로드
+            String driver = application.getInitParameter("Driver");
+            Class.forName(driver);
+
+            // DB에 연결
+            String url = application.getInitParameter("DriverURL");
+            String id = application.getInitParameter("DriverId");
+            String pw = application.getInitParameter("DriverPw");
+            con = DriverManager.getConnection(url, id, pw);
+
+            System.out.println("DB 연결 성공(인수 생성자 2)");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
