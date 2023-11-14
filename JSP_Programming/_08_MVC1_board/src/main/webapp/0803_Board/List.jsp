@@ -80,7 +80,7 @@
                     <tr align="center">
                         <td><%= virtualNum %></td>  <!-- 게시물 번호 -->
                         <td align="left">
-                            <a href="#?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>   <!-- 하이퍼링크(제목값) -->
+                            <a href="View2.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>   <!-- 하이퍼링크(제목값) -->
                         </td>
                         <td align="center"><%= dto.getId() %></td>  <!-- 작성자 아이디 -->
                         <td align="center"><%= dto.getVisitcount() %></td>  <!-- 조회수 -->
