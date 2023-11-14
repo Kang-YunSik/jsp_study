@@ -16,7 +16,7 @@ CREATE TABLE `board` (
   `content` varchar(2000) NOT NULL,
   `id` varchar(10) NOT NULL,
   `postdate` date NOT NULL DEFAULT curdate(),
-  `visitcount` int DEFAULT NULL,
+  `visitcount` int DEFAULT 0,
   PRIMARY KEY (`num`),
   KEY `board_mem_fk` (`id`),
   CONSTRAINT `board_mem_fk` FOREIGN KEY (`id`) REFERENCES `member` (`id`)
