@@ -51,8 +51,8 @@ public class BoardDAO extends JDBConnect {
         if (map.get("searchWord") != null) {
             query += " WHERE " + map.get("searchField") + " "
                     + " LIKE '%" + map.get("searchWord") + "%'";
-            query += " ORDER BY num DESC "; // 최근 게시물을 상단에 표시
         }
+        query += " ORDER BY num DESC "; // 최근 게시물을 상단에 표시
 
         try {
             stmt = con.createStatement();
