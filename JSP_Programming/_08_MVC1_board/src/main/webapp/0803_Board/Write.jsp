@@ -4,6 +4,7 @@
 <%@include file="IsLoggedIn.jsp"%> <!-- 로그인 확인 -->
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>회원제 게시판</title>
     <script type="text/javascript">
         function validateForm(form) {   // 폼 내용 검증
