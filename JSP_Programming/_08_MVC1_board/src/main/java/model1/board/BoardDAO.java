@@ -79,4 +79,28 @@ public class BoardDAO extends JDBConnect {
 
         return bbs; // JSP로 반환할 값
     }
+
+    // 게시글 작성 메소드
+    public int insertWrite(BoardDTO dto) {
+        int result = 0;
+
+        try {
+            // INSERT 쿼리문 작성
+            String query = "INSERT INTO board " +
+                    "(title, content, id, visitcount) " +
+                    "VALUES (?, ?, ?, DEFAULT) ";
+
+            psmt = con.prepareStatement(query); // 동적 쿼리
+            // 사용자 입력값을 dto에 대입
+            psmt.setString(1, dto.getTitle());
+            psmt.setString(2, dto.getContent());
+            psmt.setString(3, dto.getId());
+
+            result = psmt.executeUpdate();  // 쿼리가 성공하면 추가한 행의 개수를 반환
+        }catch (Exception e) {
+            System.out.println("게시물 입력 중 예외 발생");
+            e.printStackTrace();
+        }
+        return result;  // JSP로 반환할 값
+    }
 }
