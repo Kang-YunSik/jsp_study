@@ -15,17 +15,18 @@
 <head>
     <meta charset="UTF-8">
     <title>회원제 게시판</title>
-<%--    <script>--%>
-<%--        function deletePost() {--%>
-<%--            var confirmed = confirm("정말로 삭제하겠습니까?");--%>
-<%--            if (confirmed) {--%>
-<%--                var form = document.writeFrm;       // 이름(name)이 "writeFrm"인 폼 선택--%>
-<%--                form.method = "post";               // 전송 방식 --%>
-<%--                form.action = "DeleteProcess.jsp";  // 전송 경로--%>
-<%--                form.submit();                      // 폼값 전송--%>
-<%--            }--%>
-<%--        }--%>
-<%--    </script>--%>
+    <script>
+        // 삭제하기 버튼을 누르면 실행
+        function deletePost() {
+            var confirmed = confirm("정말로 삭제하겠습니까?");
+            if (confirmed) {
+                var form = document.writeFrm;       // 이름(name)이 "writeFrm"인 폼 선택
+                form.method = "post";               // 전송 방식
+                form.action = "DeleteProcess.jsp";  // 전송 경로
+                form.submit();                      // 폼값 전송
+            }
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="../common/Link.jsp" />
@@ -57,7 +58,7 @@
         </tr>
         <tr>
             <td colspan="4" align="center">
-<%----%>
+
                 <%--로그인한 유저에게만 수정하기/삭제하기 버튼 표시--%>
                 <%
                     if (session.getAttribute("UserId") != null
