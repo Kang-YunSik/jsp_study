@@ -23,7 +23,7 @@
 
     // 성공, 실패 여부
     if (affected == 1) {
-        response.sendRedirect("./View2.jsp?num=" + dto.getNum());
+        response.sendRedirect("./View.jsp?num=" + dto.getNum());
     } else {
         JSFunction.alertback("수정하기에 실패하였습니다.", out);
     }

@@ -37,15 +37,15 @@
     <table border="1" width="90%">
         <tr>
             <td>번호</td>
-            <td><%= dto.getNum() %></td>
+            <td><%= dto.getNum() %></td>    <%-- 클릭한 게시물의 Num출력 --%>
             <td>작성자</td>
-            <td><%= dto.getName() %></td>
+            <td><%= dto.getName() %></td>   <%-- 클릭한 게시물의 Name출력 --%>
         </tr>
         <tr>
             <td>작성일</td>
-            <td><%= dto.getPostdate() %></td>
+            <td><%= dto.getPostdate() %></td>   <%-- 클릭한 게시물의 Postdate출력 --%>
             <td>조회수</td>
-            <td><%= dto.getVisitcount() %></td>
+            <td><%= dto.getVisitcount() %></td> <%-- 클릭한 게시물의 VisitiCount출력 --%>
         </tr>
         <tr>
             <td>제목</td>
@@ -54,7 +54,7 @@
         <tr>
             <td>내용</td>
             <td colspan="3" height="100">
-                <%= dto.getContent().replace("\r\n", "<br/>") %></td>
+                <%= dto.getContent().replace("\r\n", "<br/>") %></td>   <%-- 줄바꿈(windows: \r\n)을 <br/>로 변경 --%>
         </tr>
         <tr>
             <td colspan="4" align="center">
