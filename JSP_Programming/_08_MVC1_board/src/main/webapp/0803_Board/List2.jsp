@@ -138,18 +138,37 @@
     <table border="1" width="90%">
         <tr>
             <td>
-<%--                <%
-                    for (int i=1; i<=postsPage; i++) {
-                        out.print("<a href='./List2.jsp?vpage="+i+"'> "+i+" </a>");
-                    }
-                %>--%>
+                <a href="./List2.jsp?vpage=1"> [첫 페이지] </a>
                 <%
-                    for (int i=1; i<=postsPage; i++) {
+                    if (v_page != 1 ){
+                %>
+                    <a href="./List2.jsp?vpage=<%=v_page-1%>"> [이전 페이지] </a>
+                <%
+                    } else {
+                %>
+                        <a href="./List2.jsp?vpage=1"> [이전 페이지] </a>
+                <%
+                    }
+                %>
+                <%
+                    for (int i = 1; i<=postsPage; i++) {
                 %>
                     <a href="./List2.jsp?vpage=<%=i%>"> [<%=i%>] </a>
                 <%
                     }
                 %>
+                <%
+                    if (v_page != postsPage ){
+                %>
+                     <a href="./List2.jsp?vpage=<%=v_page+1%>"> [다음 페이지] </a>
+                <%
+                } else {
+                %>
+                        <a href="./List2.jsp?vpage=<%=postsPage%>"> [다음 페이지] </a>
+                <%
+                    }
+                %>
+                <a href="./List2.jsp?vpage=<%=postsPage%>"> [마지막 페이지] </a>
             </td>
         </tr>
     </table>
