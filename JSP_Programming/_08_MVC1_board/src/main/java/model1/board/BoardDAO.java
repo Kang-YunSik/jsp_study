@@ -195,4 +195,45 @@ public class BoardDAO extends JDBConnect {
 
         return result;
     }
+
+    public List<BoardDTO> selectPageList(Map<String, Object> map, int index_no) {
+        List<BoardDTO> bbs = new Vector<BoardDTO>();    // 결과(게시물 목록)를 담을 변수
+
+
+        // 게시물 목록을 가져오는 쿼리문 작성
+        String query = "SELECT * FROM board ";
+        if (map.get("searchWord") != null) {
+            query += " WHERE " + map.get("searchField") + " "
+                    + " LIKE '%" + map.get("searchWord") + "%'";
+        }
+        query += " ORDER BY num DESC "; // 최근 게시물을 상단에 표시
+        query += " LIMIT ?,10 ";
+
+        try {
+            psmt = con.prepareStatement(query);
+            psmt.setInt(1, index_no);  // Set the value of the dynamic parameter
+
+            rs = psmt.executeQuery();
+
+            while (rs.next()) { // 결과를 순회하며 더 이상 행이 존재하지 않을 때까지 수행
+
+                BoardDTO dto = new BoardDTO();  // dto 객체 초기화 ???
+                // 쿼리문 결과(게시글 1개)의 내용을 DTO의 값으로 저장
+                dto.setNum(rs.getString("num"));
+                dto.setTitle(rs.getString("title"));
+                dto.setContent(rs.getString("content"));
+                dto.setPostdate(rs.getDate("postdate"));
+                dto.setId(rs.getString("id"));
+                dto.setVisitcount(rs.getString("visitcount"));
+
+                bbs.add(dto);   // 결과(게시물 1개)를 dto에 저장
+            }
+
+        } catch (Exception e) {
+            System.out.println("게시물 조회 중 예외 발생");
+            e.printStackTrace();
+        }
+
+        return bbs; // JSP로 반환할 값
+    }
 }

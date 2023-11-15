@@ -24,7 +24,7 @@
                 &nbsp;&nbsp;&nbsp; <!-- 메뉴 사이의 공백 처리 -->
                 <a href="../0803_Board/List.jsp">게시판(페이징X)</a>
                 &nbsp;&nbsp;&nbsp; <!-- 메뉴 사이의 공백 처리 -->
-                <a href="#">게시판(페이징O)</a>
+                <a href="../0803_Board/List2.jsp">게시판(페이징O)</a>
         </td>
     </tr>
 </table>
