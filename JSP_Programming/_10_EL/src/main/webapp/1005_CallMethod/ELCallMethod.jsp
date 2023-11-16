@@ -1,6 +1,7 @@
 <%@ page import="el.MyELClass" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="mytag" uri="../WEB-INF/MytagLib.tld" %>
 
 <%
     MyELClass myELClass = new MyELClass();  // 일반 클래스를 호출하려면 객체 생성이 필수이다.
@@ -21,5 +22,11 @@
     ${ MyELClass.showGugudan(7) }   <%-- MyELClass.java를 직접 호출하여 정적 메소드를 사용할 수 있다. --%>
                                     <%-- getGender()는 호출하지 못한다.(일반 메소드라서) --%>
 
+    <%-- WEB-INF폴더에 TLD 파일을 만들고, TLD 파일에서 메소드를 등록해야 한다. --%>
+    <h3>TLD 파일 등록 후 정적 메소드 호출하기</h3>
+    <ul>
+        <li>mytag:isNumber("100") => ${ mytag:isNumber("100")}</li>
+        <li>mytag:isNumber("이백") => ${ mytag:isNumber("이백")}</li>
+    </ul>
 </body>
 </html>
