@@ -1,4 +1,4 @@
-package util;
+package com.example._10_el;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
