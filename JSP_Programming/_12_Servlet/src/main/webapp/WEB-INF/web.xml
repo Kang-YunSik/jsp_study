@@ -3,4 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <servlet>
+        <!-- <servlet-mapping>의 <servlet-name>과 같은 값이어야 한다. -->
+        <servlet-name>hi</servlet-name>
+        <!-- Mapping할 Servlet(java)파일의 경로 -->
+        <servlet-class>servlet.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hi</servlet-name>
+        <!-- 해당 URL을 치면 위에서 정의한 Servlet 파일이 실행된다. -->
+        <!-- 해당 URL 값은 jsp파일에서 정의한 경로로 한다. -->
+        <url-pattern>/1205_webxml_Mapping/HelloServlet.do</url-pattern>
+    </servlet-mapping>
 </web-app>
