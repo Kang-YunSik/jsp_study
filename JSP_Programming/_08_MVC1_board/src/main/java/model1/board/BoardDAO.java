@@ -196,7 +196,7 @@ public class BoardDAO extends JDBConnect {
         return result;
     }
 
-    public List<BoardDTO> selectPageList(Map<String, Object> map, int index_no) {
+    public List<BoardDTO> selectPageList(Map<String, Object> map, int index_no, int POSTS_PER_PAGE) {   //
         List<BoardDTO> bbs = new Vector<BoardDTO>();    // 결과(게시물 목록)를 담을 변수
 
 
@@ -207,11 +207,12 @@ public class BoardDAO extends JDBConnect {
                     + " LIKE '%" + map.get("searchWord") + "%'";
         }
         query += " ORDER BY num DESC "; // 최근 게시물을 상단에 표시
-        query += " LIMIT ?,10 ";
+        query += " LIMIT ?,? ";
 
         try {
             psmt = con.prepareStatement(query);
-            psmt.setInt(1, index_no);  // Set the value of the dynamic parameter
+            psmt.setInt(1, index_no);
+            psmt.setInt(2, POSTS_PER_PAGE);
 
             rs = psmt.executeQuery();
 

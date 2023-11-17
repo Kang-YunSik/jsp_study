@@ -23,29 +23,28 @@
     int totalCount = dao.selectCount(param);    // 게시물 수 확인
 
     // 페이징에 필요한 변수 선언
-/*    String posts_per_page = request.getParameter("ppp");
-    if (posts_per_page != null){
-        posts_per_page = "10";
+    String postsPerPage = request.getParameter("postsPerPage");
+    if (postsPerPage == null) {     // 처음 List2에 왔을 땐, postsPerPage 값이 없기 때문에 10을 default로 줌
+        postsPerPage = "10";
     }
-    System.out.println(posts_per_page);
-    final int POSTS_PER_PAGE = Integer.parseInt(posts_per_page);*/
-
-    final int POSTS_PER_PAGE = 10; // 한 페이지에 출력할 게시글 개수
+    final int POSTS_PER_PAGE = Integer.parseInt(postsPerPage);  // 한 페이지에 출력할 게시글 개수
     int postsPage = (int) Math.ceil((double) totalCount /POSTS_PER_PAGE);   // 마지막 페이지 수
+                                                                            // (43개 -> 5페이지)
 
-    // vpage 쿼리스트링 값 받기
-    String vpage = request.getParameter("vpage");
+    // vpage에 쿼리스트링 값 받기
+    String vpage = request.getParameter("vpage");   // 페이지 번호수
     if (vpage == null){     // 처음 List2에 왔을 땐, vpage 값이 없기 때문에 1을 default로 줌
         vpage = "1";
     }
 
     int v_page = Integer.parseInt(vpage);   // vpage를 int 타입으로 형변환
                                             // 계산식에 사용하기 위해 선언함
-    int index_no = (v_page*POSTS_PER_PAGE)-POSTS_PER_PAGE;      // (1->0, 2->10, 3->20 ...)
-    int rowNumber = totalCount - index_no;                      // 행번호 출력
+    int index_no = (v_page*POSTS_PER_PAGE)-POSTS_PER_PAGE;      // DB에서 index_no부터 POSTS_PER_PAGE 만큼 SELECT 한다
+                                                                // (1->0, 2->10, 3->20 ...)
+    int rowNumber = totalCount - index_no;                      // 행번호.
 
 
-    List<BoardDTO> boardLists = dao.selectPageList(param, index_no);  // 게시물 목록 받기
+    List<BoardDTO> boardLists = dao.selectPageList(param, index_no, POSTS_PER_PAGE);  // 게시물 목록 받기
     dao.close();    // DB 연결 닫기
 %>
 <html>
@@ -73,12 +72,11 @@
         </table>
     </form>
 
-<%--  출력할 게시글 개수  --%>
-<%--    <form method="get">
+    <form method="get">
         <table border="1" width="90%">
             <tr>
-                <td>
-                    <select name="ppp">
+                <td align="center">
+                    <select name="postsPerPage">
                         <option value="10">10개</option>
                         <option value="25">25개</option>
                         <option value="50">50개</option>
@@ -88,7 +86,8 @@
                 </td>
             </tr>
         </table>
-    </form>--%>
+    </form>
+
 
     <%-- 게시물 목록 테이블(표) --%>
     <table border="1" width="90%">
@@ -117,7 +116,6 @@
                 int virtualNum = 0; // 화면상에서의 게시물 번호
                 for (BoardDTO dto : boardLists) {   // 게시글 목록 읽기 메소드 반환값 List를 한 줄 씩 읽기
 //                    virtualNum = totalCount--;  // 전체 게시글 개수 확인 메소드 반환값 totalCount로 게시물 번호 정의
-
                     virtualNum = rowNumber--;
         %>
                     <tr align="center">
