@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="_02_Implicit_Object" />
+        <module name="_0302_DTO" />
+        <module name="_07_Action_Tag" />
+        <module name="_08_MVC1_board" />
+        <module name="_04_Cookie" />
+        <module name="_06_Session" />
+        <module name="_05_DataBase" />
+        <module name="_11_JSTL" />
+        <module name="_10_EL" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
