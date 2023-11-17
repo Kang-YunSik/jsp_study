@@ -16,4 +16,13 @@
         <!-- 해당 URL 값은 jsp파일에서 정의한 경로로 한다. -->
         <url-pattern>/1205_webxml_Mapping/HelloServlet.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>bye</servlet-name>
+        <servlet-class>servlet.DirectServletPrint</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bye</servlet-name>
+        <url-pattern>/1205_webxml_Mapping/DirectServletPrint.do</url-pattern>
+    </servlet-mapping>
 </web-app>
